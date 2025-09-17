@@ -9,4 +9,15 @@
 }
 .megaparent{
     height: 100vh;
+    position: absolute;
+}
+
+.popUpWinner{
+   display: none;
+    position: absolute;
+    top: 250px;
+    left: 600px;
+    height: 200px;
+    width: 300px;
+    background-color: bisque;
 }
