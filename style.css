@@ -28,7 +28,7 @@ html, body {
     width: 360px;
     background: linear-gradient(45deg, #4b0082, #8b008b); /* Purple gradient for game board */
     border: 2px solid #d8b4fe; /* Light purple border for visibility */
-    border-radius: 12px;
+    /* border-radius: 12px; */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
