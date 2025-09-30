@@ -17,35 +17,53 @@ clickbox = (index) => {
   if (board[index] !== "") {
     return;
   }
+
   board[index] = currentPlay;
   cells[index].innerHTML = currentPlay;
+
   let winner = checkwinner();
+
   if (winner) {
     let winners = document.getElementsByClassName("popUpWinner");
     for (let i = 0; i < winners.length; i++) {
       winners[i].style.display = "block";
     }
-
-    winnerAnnounce.innerHTML = `The Winner is ${currentPlay}`;
+    winnerAnnounce.innerHTML = `The Winner is ${currentPlay} 🎉`;
     return;
   }
 
-  currentPlay = currentPlay == "X" ? "O" : "X";
+  if (!board.includes("")) {
+    let winners = document.getElementsByClassName("popUpWinner");
+    for (let i = 0; i < winners.length; i++) {
+      winners[i].style.display = "block";
+    }
+    winnerAnnounce.innerHTML = `The Game is a Draw 🤝`;
+    return;
+  }
+
+  currentPlay = currentPlay === "X" ? "O" : "X";
   tellTurn.innerHTML = `Player ${currentPlay}'s Turn`;
-  console.log(tellTurn.value);
 };
 
 checkwinner = () => {
   for (let combos of winningCombinations) {
     let [a, b, c] = combos;
-    if (board[a] && board[a] == board[b] && board[a] == board[c]) {
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       return board[a];
     }
   }
   return null;
 };
 
+restart = () => {
+  board = ["", "", "", "", "", "", "", "", ""];
+  currentPlay = "X";
+  cells.forEach((cell) => (cell.innerHTML = ""));
 
-restart=()=>{
-    
-}
+  let winners = document.getElementsByClassName("popUpWinner");
+  for (let i = 0; i < winners.length; i++) {
+    winners[i].style.display = "none";
+  }
+
+  tellTurn.innerHTML = "Player X's Turn";
+};
